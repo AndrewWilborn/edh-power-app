@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
 import Card from "./shared/card";
+import Link from "next/link";
 
 export default function Home() {
 
@@ -22,7 +23,7 @@ export default function Home() {
         <div className="flex flex-wrap w-full mb-8">
           <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">H1 Here</h1>
-            <div className="h-1 w-20 bg-yellow-500 rounded"></div>
+            <div className="h-1 w-20 bg-orange-500 rounded"></div>
           </div>
           <p className="lg:w-1/2 w-full leading-relaxed text-gray-400 text-opacity-90">Possible Description here</p>
         </div>
@@ -34,6 +35,9 @@ export default function Home() {
 
         }
       </div>
+      <Link href="/createDeck" type="button" class="py-2 px-4  bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white transition mx-auto p-10 ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+        + New Deck
+      </Link>
     </section>
   )
 }

@@ -19,7 +19,7 @@ export default function Card({deck}) {
       <div className="bg-gray-800 bg-opacity-40 p-6 rounded-lg">
         <img className="h-40 rounded w-full object-cover object-center mb-6" src={commander ? commander.image_uri : ""} alt="content"/>
           <h2 className="text-lg text-white font-medium title-font mb-4">{deck.deck_name}</h2>
-          <h3 className="tracking-widest text-yellow-400 text-xs font-medium title-font">{commander ? commander.name : ""}</h3>
+          <h3 className="tracking-widest text-orange-400 text-xs font-medium title-font">{commander ? commander.name : ""}</h3>
           <p className="leading-relaxed text-base">P Tag</p>
       </div>
     </div>
