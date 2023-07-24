@@ -19,6 +19,8 @@ export default function createDeck() {
       const data = await response.json();
       commander = data.id;
 
+      // TODO: verify that the card is a legal commander and throw a warning if it is illegal
+
       // Post deck to database
       const postResponse = await fetch("http://localhost:3000/decks", {
         method: 'POST',
