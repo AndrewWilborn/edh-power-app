@@ -2,11 +2,21 @@
 
 export default function createDeck() {
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const owner = "placeholder"
     const deck_name = e.target.name.value;
-    const commander = "532fca6b-f788-43f8-b29f-7273e7a48449";
+    let commander = "";
+    let commanderName = e.target.commander.value;
+    commanderName = commanderName.trim();
+    commanderName = commanderName.replace(" ", "+");
+    await fetch(`https://api.scryfall.com/cards/named?fuzzy=${commanderName}`)
+      .then(response => response.json())
+      .then(data => {
+        commander = data.id;
+      })
+      .catch(alert); // TODO: give proper feedback for error handling
+    // Post deck to database
     fetch("http://localhost:3000/decks", {
       method: 'POST',
       headers: {
@@ -18,8 +28,8 @@ export default function createDeck() {
         deck_name: deck_name
       }),
     })
-    .then()
-      .catch(alert);
+      .then()
+      .catch(alert); // TODO: give proper feedback for error handling
   }
 
   return (
