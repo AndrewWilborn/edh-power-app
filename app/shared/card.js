@@ -17,10 +17,9 @@ export default function Card({deck}) {
     <div className="flex flex-wrap -m-4">
     <div className="xl:w-1/4 md:w-1/2 p-4">
       <div className="bg-gray-800 bg-opacity-40 p-6 rounded-lg">
-        <img className="h-40 rounded w-full object-cover object-center mb-6" src={commander ? commander.image_uri : ""} alt="content"/>
-          <h2 className="text-lg text-white font-medium title-font mb-4">{deck.deck_name}</h2>
-          <h3 className="tracking-widest text-orange-400 text-xs font-medium title-font">{commander ? commander.name : ""}</h3>
-          <p className="leading-relaxed text-base">P Tag</p>
+        <img className="w-full rounded object-cover object-center mb-6" src={commander ? commander.image_uri : ""} alt="content"/>
+        <h2 className="text-lg text-white font-medium title-font mb-4">{deck.deck_name}</h2>
+        <h3 className="tracking-widest text-orange-400 text-xs font-medium title-font">Commander: {commander ? commander.name : ""}</h3>
       </div>
     </div>
   </div>
