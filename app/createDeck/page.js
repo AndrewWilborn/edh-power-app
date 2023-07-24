@@ -1,6 +1,10 @@
 "use client"
 
+import { useRouter } from "next/navigation";
+
 export default function createDeck() {
+
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -10,26 +14,27 @@ export default function createDeck() {
     let commanderName = e.target.commander.value;
     commanderName = commanderName.trim();
     commanderName = commanderName.replace(" ", "+");
-    await fetch(`https://api.scryfall.com/cards/named?fuzzy=${commanderName}`)
-      .then(response => response.json())
-      .then(data => {
-        commander = data.id;
-      })
-      .catch(alert); // TODO: give proper feedback for error handling
-    // Post deck to database
-    fetch("http://localhost:3000/decks", {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        owner: owner,
-        commander: commander,
-        deck_name: deck_name
-      }),
-    })
-      .then()
-      .catch(alert); // TODO: give proper feedback for error handling
+    try {
+      const response = await fetch(`https://api.scryfall.com/cards/named?fuzzy=${commanderName}`);
+      const data = await response.json();
+      commander = data.id;
+
+      // Post deck to database
+      const postResponse = await fetch("http://localhost:3000/decks", {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          owner: owner,
+          commander: commander,
+          deck_name: deck_name
+        }),
+      });
+      router.push('/')
+    } catch (error) {
+      alert(error);
+    }
   }
 
   return (
