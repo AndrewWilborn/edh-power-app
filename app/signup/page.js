@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
 
 export default function LoginForm() {
-  const { setUser } = useContext(AuthContext);
+  const setUser = useContext(AuthContext);
 
   const router = useRouter();
 
@@ -34,7 +34,7 @@ export default function LoginForm() {
       .catch((err) => alert(err.message))
   }
 
-  const handleLogin = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
@@ -79,7 +79,7 @@ export default function LoginForm() {
               </div>
             </div>
             <div class="p-2 w-full">
-              <input type="submit" value="Log In" class="flex justify-center w-full mx-auto text-white bg-green-500 border-0 py-2 focus:outline-none hover:bg-green-600 rounded text-md" />
+              <input type="submit" value="Sign Up" class="flex justify-center w-full mx-auto text-white bg-green-500 border-0 py-2 focus:outline-none hover:bg-green-600 rounded text-md" />
             </div>
           </div>
         </div>
