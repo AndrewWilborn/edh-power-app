@@ -1,6 +1,8 @@
 "use client"
 
+import { AuthContext, AuthProvider } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
 
 export default function createDeck() {
 
@@ -8,7 +10,7 @@ export default function createDeck() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const owner = "placeholder"
+    const owner = "placeholder";
     const deck_name = e.target.name.value;
     let commander = "";
     let commanderName = e.target.commander.value;

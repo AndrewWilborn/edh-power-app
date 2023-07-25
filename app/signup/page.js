@@ -1,33 +1,20 @@
 "use client"
 
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
-import { AuthContext } from "../layout";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAzMH0_Wp6CQLKxr9orrwpNhzB3JpowPyE",
-  authDomain: "edh-power-auth.firebaseapp.com",
-  projectId: "edh-power-auth",
-  storageBucket: "edh-power-auth.appspot.com",
-  messagingSenderId: "455964869403",
-  appId: "1:455964869403:web:9c52da1ec545527bf789be"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+import { AuthContext, auth } from "@/context/AuthContext"
 
 export default function LoginForm() {
-  const setUser = useContext(AuthContext);
+  const { handleLogin } = useContext(AuthContext);
 
   const router = useRouter();
 
   const handleGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-      .then((userCredential) => {
-        setUser(userCredential.user); // Create account, logs user in
+      .then((result) => {
+        handleLogin(result)
         // use router to send user back to home page
         router.push("/");
       })
@@ -38,9 +25,9 @@ export default function LoginForm() {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        setUser(userCredential.user); // Create account, logs user in
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        handleLogin(result)
         // use router to send user back to home page
         router.push("/");
       })
