@@ -19,32 +19,25 @@ export const auth = getAuth(app);
 
 export function AuthProvider({ children }){
   const [user, setUser] = useState()
-  const [token, setToken] = useState()
 
   useEffect(() => {
     if(!user) {
       const user = auth.currentUser;
       if(user) {
         setUser(user)
-        // TODO: get token
-        setToken()
       }
     }
   }, [])
 
   const handleLogin = (result) => {
     setUser(result.user)
-    const token = GoogleAuthProvider.credentialFromResult(result)
-    setToken(token)
   }
 
   const handleLogout = () => {
     setUser()
-    setToken()
-    sessionStorage.clear()
   }
 
-  return <AuthContext.Provider value={{ user, token, handleLogin, handleLogout }}>
+  return <AuthContext.Provider value={{ user, handleLogin, handleLogout }}>
     {children}
   </AuthContext.Provider>
 }
