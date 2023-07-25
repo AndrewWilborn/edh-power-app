@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
-import Card from "./shared/card";
+import Card from "./shared/Card";
 import Link from "next/link";
 
 export default function Home() {
