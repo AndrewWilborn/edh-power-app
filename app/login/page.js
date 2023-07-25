@@ -27,11 +27,11 @@ export default function LoginForm() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((userCredential) => {
-        setUser(userCredential.user) // Create account, logs user in
+        setUser(userCredential.user); // Create account, logs user in
         // use router to send user back to home page
         router.push("/");
       })
-      .catch((err) => alert(err.message))
+      .catch((err) => alert(err.message));
   }
 
   const handleLogin = (e) => {
@@ -40,11 +40,11 @@ export default function LoginForm() {
     const password = e.target.password.value;
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        setUser(userCredential.user) // Create account, logs user in
+        setUser(userCredential.user); // Create account, logs user in
         // use router to send user back to home page
         router.push("/");
       })
-      .catch((err) => alert(err.message))
+      .catch((err) => alert(err.message));
   }
 
   return (
