@@ -32,7 +32,8 @@ export default function createDeck() {
         body: JSON.stringify({
           owner: owner,
           commander: commander,
-          deck_name: deck_name
+          deck_name: deck_name,
+          timestamp: Date.now()
         }),
       });
       router.push('/')
