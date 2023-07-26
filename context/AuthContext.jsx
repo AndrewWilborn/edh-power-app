@@ -1,7 +1,7 @@
 "use client"
 import { initializeApp } from "firebase/app"
 import { onAuthStateChanged, getAuth } from "firebase/auth"
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 
 export const AuthContext = createContext()
 
@@ -17,18 +17,23 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-export function AuthProvider({ children }){
+export function AuthProvider({ children }) {
   const [user, setUser] = useState()
 
-  onAuthStateChanged(auth, (_user) => {
-    setUser(_user)
-  })
+  useEffect(() => {
+    onAuthStateChanged(auth, (_user) => {
+      console.log("auth state changed")
+      setUser(_user)
+    })
+  }, [])
+
 
   const handleLogin = (result) => {
     setUser(result.user)
   }
 
   const handleLogout = () => {
+    console.log("logging out")
     setUser()
   }
 

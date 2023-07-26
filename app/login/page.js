@@ -4,6 +4,7 @@ import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { AuthContext, auth } from "@/context/AuthContext";
+import Link from "next/link";
 
 
 export default function LoginForm() {
@@ -51,7 +52,7 @@ export default function LoginForm() {
       <div class="flex flex-col w-full">
         <h2 class="sm:text-xl text-l font-medium title-font mb-4 text-white">Use Email and Password</h2>
       </div>
-      <form onSubmit={() => {}}>
+      <form onSubmit={handleLoginWithEmailAndPassword}>
         <div class="lg:w-1/2 md:w-2/3 mx-auto">
           <div class="flex flex-wrap -m-2">
             <div class="p-2 w-full">
@@ -72,6 +73,9 @@ export default function LoginForm() {
           </div>
         </div>
       </form>
+      <div class="my-2">
+        <Link href="/signup">Create Account</Link>
+      </div>
     </div>
   </section>
   )

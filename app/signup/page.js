@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } f
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { AuthContext, auth } from "@/context/AuthContext"
+import Link from "next/link";
 
 export default function LoginForm() {
   const { handleLogin } = useContext(AuthContext);
@@ -27,7 +28,7 @@ export default function LoginForm() {
     const password = e.target.password.value;
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
-        handleLogin(result)
+        handleLogin(result);
         // use router to send user back to home page
         router.push("/");
       })
@@ -38,7 +39,7 @@ export default function LoginForm() {
   <section class="text-gray-400 bg-gray-900 body-font relative">
     <div class="container px-5 py-24 mx-auto">
       <div class="flex flex-col text-center w-full mb-4">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Log In</h1>
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Sign Up</h1>
       </div>
       <button onClick={handleGoogle} type="button" class="py-2 px-4 flex justify-center items-center  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg mb-4">
         <svg width="20" height="20" fill="currentColor" class="mr-2" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +51,7 @@ export default function LoginForm() {
       <div class="flex flex-col w-full">
         <h2 class="sm:text-xl text-l font-medium title-font mb-4 text-white">Use Email and Password</h2>
       </div>
-      <form onSubmit={() => {}}>
+      <form onSubmit={handleSignup}>
         <div class="lg:w-1/2 md:w-2/3 mx-auto">
           <div class="flex flex-wrap -m-2">
             <div class="p-2 w-full">
@@ -71,6 +72,9 @@ export default function LoginForm() {
           </div>
         </div>
       </form>
+      <div class="my-2">
+        <Link href="/login">Already have an account? Log In</Link>
+      </div>
     </div>
   </section>
   )
