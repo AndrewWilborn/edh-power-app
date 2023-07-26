@@ -33,13 +33,13 @@ export default function UserDropdown() {
                 </span>
               </span>
             </Link>
-            <button onClick={handleLogout} class="block px-4 py-2 text-md text-gray-100 hover:text-white hover:bg-gray-600" role="menuitem">
+            <Link onClick={handleLogout} href="#" class="block px-4 py-2 text-md text-gray-100 hover:text-white hover:bg-gray-600" role="menuitem">
               <span class="flex flex-col">
                 <span>
                   Log Out
                 </span>
               </span>
-            </button>
+            </Link>
           </div>
         </div>
       }
