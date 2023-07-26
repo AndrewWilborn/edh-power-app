@@ -1,20 +1,42 @@
 "use client"
 
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContext } from "@/context/AuthContext";
 import Link from "next/link";
 
 export default function UserDropdown() {
+
+  const ref = useRef();
+
   const { handleLogout } = useContext(AuthContext);
 
   const [showDropdown, setShowDropdown] = useState(false);
 
+  const listener = (e) => {
+    console.log("Listener triggered....")
+    // Do nothing if clicking ref's element or descendent elements
+    if (!ref?.current || ref.current.contains(e.target)) {
+      console.log("clicked ref (IGNORE)")
+      return;
+    }
+    console.log("clicked OUTSIDE (close)")
+    setShowDropdown(false);
+      document.removeEventListener('mousedown', listener);
+      document.removeEventListener('touchstart', listener);
+  };
+
   const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
+    if (showDropdown) {
+      setShowDropdown(false)
+    } else {
+      setShowDropdown(true)
+      document.addEventListener('mousedown', listener);
+      document.addEventListener('touchstart', listener);
+    }
   }
 
   return (
-    <div class="relative inline-block text-left">
+    <div ref={ref} class="relative inline-block text-left">
       <div>
         <button onClick={toggleDropdown} type="button" class="  flex items-center justify-center w-full rounded-md  px-4 py-2 text-sm font-medium text-gray-50 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-500" id="options-menu">
           <svg width="20" fill="currentColor" height="20" class="text-gray-100" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
