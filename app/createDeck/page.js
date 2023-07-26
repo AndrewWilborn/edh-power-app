@@ -1,10 +1,12 @@
 "use client"
 
-import { AuthContext, AuthProvider } from "@/context/AuthContext";
+import { AuthContext } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 
 export default function createDeck() {
+
+  const { user } = useContext(AuthContext)
 
   const router = useRouter();
 
@@ -28,6 +30,7 @@ export default function createDeck() {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
+          'Authorization': user.accessToken
         },
         body: JSON.stringify({
           owner: owner,
