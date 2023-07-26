@@ -35,6 +35,8 @@ export default function createDeck() {
         body: JSON.stringify({
           owner: owner,
           commander: commander,
+          avg_rating: 7, //placeholder value
+          num_ratings: 69, // placeholder value
           deck_name: deck_name,
           timestamp: Date.now()
         }),
