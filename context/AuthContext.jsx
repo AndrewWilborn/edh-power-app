@@ -1,7 +1,7 @@
 "use client"
 import { initializeApp } from "firebase/app"
-import { GoogleAuthProvider, getAuth } from "firebase/auth"
-import { createContext, useState, useEffect } from "react"
+import { onAuthStateChanged, getAuth } from "firebase/auth"
+import { createContext, useState } from "react"
 
 export const AuthContext = createContext()
 
@@ -20,14 +20,9 @@ export const auth = getAuth(app);
 export function AuthProvider({ children }){
   const [user, setUser] = useState()
 
-  useEffect(() => {
-    if(!user) {
-      const user = auth.currentUser;
-      if(user) {
-        setUser(user)
-      }
-    }
-  }, [])
+  onAuthStateChanged(auth, (_user) => {
+    setUser(_user)
+  })
 
   const handleLogin = (result) => {
     setUser(result.user)
