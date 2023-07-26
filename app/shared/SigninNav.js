@@ -3,7 +3,7 @@
 import { AuthContext } from "@/context/AuthContext"
 import Link from "next/link"
 import { useContext } from "react"
-import UserDropdown from "./userDropdown"
+import UserDropdown from "./UserDropdown"
 
 export default function SigninNav() {
   const {user} = useContext(AuthContext)
