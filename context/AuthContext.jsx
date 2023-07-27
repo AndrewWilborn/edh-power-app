@@ -22,7 +22,6 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     onAuthStateChanged(auth, (_user) => {
-      console.log("auth state changed")
       setUser(_user)
     })
   }, [])
@@ -33,7 +32,6 @@ export function AuthProvider({ children }) {
   }
 
   const handleLogout = () => {
-    console.log("logging out")
     setUser()
   }
 

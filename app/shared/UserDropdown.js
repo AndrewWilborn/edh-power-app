@@ -13,13 +13,10 @@ export default function UserDropdown() {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const listener = (e) => {
-    console.log("Listener triggered....")
     // Do nothing if clicking ref's element or descendent elements
     if (!ref?.current || ref.current.contains(e.target)) {
-      console.log("clicked ref (IGNORE)")
       return;
     }
-    console.log("clicked OUTSIDE (close)")
     setShowDropdown(false);
       document.removeEventListener('mousedown', listener);
       document.removeEventListener('touchstart', listener);
