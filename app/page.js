@@ -11,7 +11,9 @@ export default function Home() {
   const { user } = useContext(AuthContext)
 
   useEffect(() => {
-    fetch("http://localhost:3000/decks")
+    let fetchString = "http://localhost:3000/decks"
+    if(user) console.log(user.uid)
+    fetch(fetchString)
       .then(response => response.json())
       .then(data => {
         data.sort((a, b) => b.timestamp - a.timestamp)
@@ -35,7 +37,7 @@ export default function Home() {
           </div>
           {
             user &&
-            <Link href="/createDeck" type="button" class="py-2 px-4  bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white transition mx-auto p-10 ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+            <Link href="/createDeck" type="button" className="py-2 px-4  bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white transition mx-auto p-10 ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
               + New Deck
             </Link>
           }
