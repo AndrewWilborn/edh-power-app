@@ -12,7 +12,6 @@ export default function createDeck() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const owner = "placeholder";
     const deck_name = e.target.name.value;
     let commander = "";
     let commanderName = e.target.commander.value;
@@ -33,7 +32,6 @@ export default function createDeck() {
           'Authorization': user.accessToken
         },
         body: JSON.stringify({
-          owner: owner,
           commander: commander,
           avg_rating: 7, //placeholder value
           num_ratings: 69, // placeholder value
