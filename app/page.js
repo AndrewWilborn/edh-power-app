@@ -44,7 +44,7 @@ export default function Home() {
         {!decks
           ? <p>Loading...</p>
           : decks.map(deck =>
-            <Card deck={deck} />
+            <Card deck={deck} key={deck.id}/>
           )
         }
       </div>
