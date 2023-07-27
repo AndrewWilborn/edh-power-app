@@ -1,28 +1,26 @@
 "use client"
 
-import { AuthContext } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext"
+import { useRouter } from "next/navigation"
+import { useContext } from "react"
 
 export default function createDeck() {
 
   const { user } = useContext(AuthContext)
 
-  const router = useRouter();
+  const router = useRouter()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const deck_name = e.target.name.value;
-    let commander = "";
-    let commanderName = e.target.commander.value;
-    commanderName = commanderName.trim();
-    commanderName = commanderName.replace(" ", "+");
+    let commander = ""
+    let commanderName = e.target.commander.value
+    commanderName = commanderName.trim()
+    commanderName = commanderName.replace(" ", "+")
     try {
       const response = await fetch(`https://api.scryfall.com/cards/named?fuzzy=${commanderName}`);
-      const data = await response.json();
-      commander = data.id;
-
-      // TODO: verify that the card is a legal commander and throw a warning if it is illegal
+      const data = await response.json()
+      commander = data.id
 
       // Post deck to database
       const postResponse = await fetch("http://localhost:3000/decks", {
@@ -38,10 +36,10 @@ export default function createDeck() {
           deck_name: deck_name,
           timestamp: Date.now()
         }),
-      });
+      })
       router.push('/')
     } catch (error) {
-      alert(error);
+      alert(error)
     }
   }
 
