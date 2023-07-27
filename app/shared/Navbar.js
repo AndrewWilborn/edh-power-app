@@ -8,7 +8,7 @@ export default function NavBar() {
     <nav class="bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-600">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href="/" class="flex items-center">
-          <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
+          <img src="/images/android-chrome-512x512.png" class="h-8 mr-3" alt="EDH Power logo" />
           <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">EDH Power</span>
         </Link>
         <div class="flex md:order-2">
