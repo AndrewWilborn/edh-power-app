@@ -11,16 +11,15 @@ export default function Home() {
   const { user } = useContext(AuthContext)
 
   useEffect(() => {
-    let fetchString = "http://localhost:3000/decks"
-    if(user) console.log(user.uid)
-    fetch(fetchString)
+    console.log(user)
+    fetch(`http://localhost:3000/decks/${user ? user.uid : ""}`)
       .then(response => response.json())
       .then(data => {
         data.sort((a, b) => b.timestamp - a.timestamp)
         setDecks(data)
       })
       .catch(alert)
-  }, [setDecks])
+  }, [setDecks, user])
 
   return (
     <section className="text-gray-400 body-font bg-gray-900">
