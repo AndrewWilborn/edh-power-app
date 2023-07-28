@@ -31,7 +31,7 @@ export default function Home() {
         }
         <div className="flex flex-wrap w-full">
           <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
-            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">{user ? "My Decks" :"All Decks"}</h1>
+            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">{user ? "My Decks" : "All Decks"}</h1>
             <div className="h-1 w-20 bg-orange-500 rounded"></div>
           </div>
           {
@@ -41,12 +41,15 @@ export default function Home() {
             </Link>
           }
         </div>
-        {!decks
-          ? <p>Loading...</p>
-          : decks.map(deck =>
-            <Card deck={deck} key={deck.id}/>
-          )
-        }
+
+        <div className="flex flex-wrap -m-4">
+          {!decks
+            ? <p>Loading...</p>
+            : decks.map(deck =>
+              <Card deck={deck} key={deck.id} />
+            )
+          }
+        </div>
       </div>
     </section>
   )
