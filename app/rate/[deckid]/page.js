@@ -14,7 +14,6 @@ export default function rate({ params: {deckid} }) {
   const [deck, setDeck] = useState();
   
   useEffect(() => {
-    console.log(`http://localhost:3000/deckById/${deckid}`)
     fetch(`http://localhost:3000/deckById/${deckid}`)
     .then(response => response.json())
     .then(data => {
@@ -39,7 +38,7 @@ export default function rate({ params: {deckid} }) {
           ratingVal: ratingVal
         }),
       })
-      //router.push('/')
+      router.push('/')
     } catch (error) {
       alert(error);
     }
