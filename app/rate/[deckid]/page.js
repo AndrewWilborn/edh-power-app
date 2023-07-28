@@ -1,14 +1,28 @@
 "use client"
 
+import Card from "@/app/shared/Card"
 import { AuthContext } from "@/context/AuthContext"
 import { useRouter } from "next/navigation"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 
 export default function rate({ params: {deckid} }) {
 
   const { user } = useContext(AuthContext)
 
   const router = useRouter()
+
+  const [deck, setDeck] = useState();
+  
+  useEffect(() => {
+    console.log(`http://localhost:3000/deckById/${deckid}`)
+    fetch(`http://localhost:3000/deckById/${deckid}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      setDeck(data)
+    })
+    .catch(alert)
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -37,6 +51,9 @@ export default function rate({ params: {deckid} }) {
         <div className="flex flex-col text-center w-full mb-4">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Rate Deck</h1>
         </div>
+        {deck &&
+          <Card deck={deck}/>
+        }
         <form onSubmit={handleSubmit}>
           <div className="lg:w-1/2 md:w-2/3 mx-auto">
             <div className="flex flex-wrap -m-2">

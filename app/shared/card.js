@@ -4,6 +4,8 @@ import { useEffect, useState } from "react"
 
 export default function Card({ deck }) {
 
+  console.log(deck)
+
   const [commander, setCommander] = useState()
 
   useEffect(() => {
