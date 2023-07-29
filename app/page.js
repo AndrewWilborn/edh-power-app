@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import Card from "./shared/Card";
 import Link from "next/link";
 import { AuthContext } from "@/context/AuthContext";
+import QRCode from "./shared/QRCode";
 
 export default function Home() {
 
@@ -20,6 +21,13 @@ export default function Home() {
       })
       .catch(alert)
   }, [setDecks, user])
+
+  const [showQR, setShowQR] = useState(false)
+  const [QRString, setQRString] = useState("")
+  const handleQR = (str) => {
+    setQRString(str)
+    setShowQR(true)
+  }
 
   return (
     <section className="text-gray-400 body-font bg-gray-900">
@@ -46,11 +54,12 @@ export default function Home() {
           {!decks
             ? <p>Loading...</p>
             : decks.map(deck =>
-              <Card deck={deck} key={deck.id} />
+              <Card deck={deck} key={deck.id} handleQR={handleQR}/>
             )
           }
         </div>
       </div>
+      {showQR && <QRCode url={QRString} setShowQR={setShowQR}/>}
     </section>
   )
 }

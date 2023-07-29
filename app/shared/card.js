@@ -1,10 +1,9 @@
 "use client"
 
 import { useContext, useEffect, useState } from "react"
-import { useQRCode } from "next-qrcode"
 import { AuthContext } from "@/context/AuthContext"
 
-export default function Card({ deck }) {
+export default function Card({ deck, handleQR }) {
 
   console.log(deck)
 
@@ -19,29 +18,6 @@ export default function Card({ deck }) {
       .then(data => setCommander(data))
       .catch(alert)
   }, [setCommander])
-
-  // const [showQR, setShowQR] = useState(false)
-  // const { Canvas } = useQRCode()
-  // const hanldeQR = () => {
-  //   setShowQR(true)
-  // }
-  // showQR
-  // ? 
-  // <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-  //   <Canvas
-  //     text={'https://github.com/bunlong/next-qrcode'}
-  //     options={{
-  //       level: 'M',
-  //       margin: 3,
-  //       scale: 4,
-  //       width: 200,
-  //       color: {
-  //         dark: '#000000FF',
-  //         light: '#FFFFFFFF',
-  //       },
-  //     }} />
-  // </div>
-  // : <button onClick={hanldeQR} className="btn btn-blue">Placeholder QR Code Button</button>
 
   const [showDropdown, setShowDropdown] = useState(false)
 
@@ -66,7 +42,7 @@ export default function Card({ deck }) {
           {deck.decklist_url && <h3 className={h3Style}>{deck.decklist_url}</h3>}
         </div>
         {showDropdown
-          ? <></>
+          ? <button onClick={() => {handleQR("LONG STRING THIS STIRNG IS VERY VERY VERY LONG LONG STRING ITS LONG")}}>Button</button>
           : ((user && user.uid) == (deck && deck.owner))
           && <button onClick={() => {setShowDropdown(true)}}>Show Dropdown</button>
         }
