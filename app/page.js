@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     console.log(user)
-    fetch(`http://localhost:3000/decks/${user ? user.uid : ""}`)
+    fetch(`https://edh-power-api.azurewebsites.net/decks/${user ? user.uid : ""}`)
       .then(response => response.json())
       .then(data => {
         data.sort((a, b) => b.timestamp - a.timestamp)

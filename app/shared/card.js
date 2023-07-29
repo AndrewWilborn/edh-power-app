@@ -14,7 +14,7 @@ export default function Card({ deck }) {
 
   const [commander, setCommander] = useState()
   useEffect(() => {
-    fetch(`http://localhost:3000/cards/${deck.commander}`)
+    fetch(`https://edh-power-api.azurewebsites.net/cards/${deck.commander}`)
       .then(response => response.json())
       .then(data => setCommander(data))
       .catch(alert)

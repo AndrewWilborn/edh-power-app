@@ -23,7 +23,7 @@ export default function createDeck() {
       commander = data.id
 
       // Post deck to database
-      const postResponse = await fetch("http://localhost:3000/decks", {
+      const postResponse = await fetch("https://edh-power-api.azurewebsites.net/decks", {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
