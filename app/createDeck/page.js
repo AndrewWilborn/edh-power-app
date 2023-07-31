@@ -16,18 +16,29 @@ export default function createDeck() {
     e.preventDefault()
     const deck_name = e.target.name.value
     const decklist_url = e.target.decklist.value
-    const partner = e.target.partner.value
     let commander = ""
     let commanderName = e.target.commander.value
     commanderName = commanderName.trim()
     commanderName = commanderName.replace(" ", "+")
+    let partner = null;
+    let partnerName = e.target.partner?.value
+    if(partnerName){
+      partnerName = partnerName.trim()
+      partnerName = partnerName.replace(" ", "+")
+    }
     try {
-      const response = await fetch(`https://api.scryfall.com/cards/named?fuzzy=${commanderName}`);
+      const response = await fetch(`https://api.scryfall.com/cards/named?fuzzy=${commanderName}`)
       const data = await response.json()
-      commander = data.id
+      commander = data.name
+
+      if(partnerName){
+        const partnerResponse = await fetch(`https://api.scryfall.com/cards/named?fuzzy=${partnerName}`)
+        const partnerData = await partnerResponse.json()
+        partner = partnerData.name
+      }
 
       // Post deck to database
-      const postResponse = await fetch("https://edh-power-api.azurewebsites.net/decks", {
+      const postResponse = await fetch("http://localhost:5001/decks", {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',

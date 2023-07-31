@@ -4,16 +4,21 @@ import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "@/context/AuthContext"
 
 export default function Card({ deck, handleQR }) {
-  
+
   const { user } = useContext(AuthContext)
 
   const [commander, setCommander] = useState()
+  const [partner, setPartner] = useState()
   useEffect(() => {
-    fetch(`https://edh-power-api.azurewebsites.net/cards/${deck.commander}`)
+    fetch(`http://localhost:5001/cards/${deck.commander}`)
       .then(response => response.json())
       .then(data => setCommander(data))
       .catch(alert)
-  }, [setCommander])
+    deck.partner && fetch(`http://localhost:5001/cards/${deck.partner}`)
+      .then(response => response.json())
+      .then(data => setPartner(data))
+      .catch(alert)
+  }, [setCommander, setPartner])
 
   const [showDropdown, setShowDropdown] = useState(false)
 
@@ -29,7 +34,7 @@ export default function Card({ deck, handleQR }) {
         </div>
         <div className="px-4 pt-1">
           <h2 className="text-lg text-white font-medium title-font mb-1">{deck.deck_name}</h2>
-          <h3 className={h3Style}>Commander: {commander ? commander.name : ""}</h3>
+          <h3 className={h3Style}>Commander: {commander ? commander.name : ""}{partner && " and " + partner.name}</h3>
           <div className="w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700 mb-1">
             <div className="h-6 bg-blue-600 rounded-full dark:bg-blue-500" style={{ width: `${deck.avg_rating / 10}%` }}></div>
           </div>
@@ -38,9 +43,9 @@ export default function Card({ deck, handleQR }) {
           {deck.decklist_url && <h3 className={h3Style}>{deck.decklist_url}</h3>}
         </div>
         {showDropdown
-          ? <button onClick={() => {handleQR("LONG STRING THIS STIRNG IS VERY VERY VERY LONG LONG STRING ITS LONG")}}>Button</button>
+          ? <button onClick={() => { handleQR("LONG STRING THIS STIRNG IS VERY VERY VERY LONG LONG STRING ITS LONG") }}>Button</button>
           : ((user && user.uid) == (deck && deck.owner))
-          && <button onClick={() => {setShowDropdown(true)}}>Show Dropdown</button>
+          && <button onClick={() => { setShowDropdown(true) }}>Show Dropdown</button>
         }
       </div>
     </div>

@@ -14,7 +14,7 @@ export default function rate({ params: {deckid} }) {
   const [deck, setDeck] = useState();
   
   useEffect(() => {
-    fetch(`https://edh-power-api.azurewebsites.net/deckById/${deckid}`)
+    fetch(`http://localhost:5001/deckById/${deckid}`)
     .then(response => response.json())
     .then(data => {
       setDeck(data)
@@ -26,7 +26,7 @@ export default function rate({ params: {deckid} }) {
     e.preventDefault()
     const ratingVal = e.target.rating.value
     try {
-      const response = await fetch("https://edh-power-api.azurewebsites.net/ratings", {
+      const response = await fetch("http://localhost:5001/ratings", {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
