@@ -52,6 +52,19 @@ export default function createDeck() {
           timestamp: Date.now()
         }),
       })
+      const deckId = await postResponse.json()
+      const ratingVal = e.target.rating.value
+      await fetch("http://localhost:5001/ratings", {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          'Authorization': user.accessToken
+        },
+        body: JSON.stringify({
+          deckId: deckId.id,
+          ratingVal: ratingVal
+        }),
+      })
       router.push('/')
     } catch (error) {
       alert(error)
@@ -98,6 +111,12 @@ export default function createDeck() {
                 <div className="relative">
                   <label for="decklist" className="leading-7 text-sm text-gray-400">Decklist URL:</label>
                   <input type="text" id="decklist" name="decklist" placeholder="A link to your decklist (optional)" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-orange-500 focus:bg-gray-900 focus:ring-2 focus:ring-orange-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                </div>
+              </div>
+              <div className="p-2 w-full">
+                <div className="relative">
+                  <label htmlFor="rating" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Power Level, your rating for the deck</label>
+                  <input id="rating" type="range" min="0" max="1000" className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-700" />
                 </div>
               </div>
               <div className="p-2 w-full">
