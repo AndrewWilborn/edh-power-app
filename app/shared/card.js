@@ -4,12 +4,8 @@ import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "@/context/AuthContext"
 
 export default function Card({ deck, handleQR }) {
-
-  console.log(deck)
-
+  
   const { user } = useContext(AuthContext)
-
-  console.log(user)
 
   const [commander, setCommander] = useState()
   useEffect(() => {

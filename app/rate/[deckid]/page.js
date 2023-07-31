@@ -17,7 +17,6 @@ export default function rate({ params: {deckid} }) {
     fetch(`https://edh-power-api.azurewebsites.net/deckById/${deckid}`)
     .then(response => response.json())
     .then(data => {
-      console.log(data)
       setDeck(data)
     })
     .catch(alert)
