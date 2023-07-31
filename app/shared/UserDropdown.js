@@ -45,13 +45,6 @@ export default function UserDropdown() {
       {showDropdown &&
         <div className="absolute right-0 w-56 mt-2 origin-top-right rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5">
           <div className="py-1 " role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-            <Link href="/modifyAccount" className="block px-4 py-2 text-md text-gray-100 hover:text-white hover:bg-gray-600" role="menuitem">
-              <span className="flex flex-col">
-                <span>
-                  Account
-                </span>
-              </span>
-            </Link>
             <Link onClick={handleLogout} href="#" className="block px-4 py-2 text-md text-gray-100 hover:text-white hover:bg-gray-600" role="menuitem">
               <span className="flex flex-col">
                 <span>
