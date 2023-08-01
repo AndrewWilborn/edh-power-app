@@ -119,7 +119,7 @@ export default function createDeck() {
               <div className="p-2 w-full">
                 <div className="relative">
                   <label htmlFor="rating" className="block mb-2 text-sm text-gray-400">Power Level</label>
-                  <input id="rating" type="range" min="0" max="1000" className="w-full h-2 rounded-lg appearance-none cursor-pointer" style={{background: `${getGradient(100)}`}} />
+                  <input id="rating" type="range" min="1" max="1000" className="w-full h-2 rounded-lg appearance-none cursor-pointer" style={{background: `${getGradient(100)}`}} />
                 </div>
                 <RatingLabel />
               </div>
