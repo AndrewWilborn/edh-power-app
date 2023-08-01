@@ -38,8 +38,10 @@ export default function Card({ deck, handleQR }) {
   return (
     <div className="xl:w-1/3 md:w-1/2 w-full p-4">
       <div className="bg-gray-800 bg-opacity-40 rounded-lg">
-        <div className={`w-full aspect-2/1 bg-cover rounded-lg flex flex-col items-end justify-between`} style={{ backgroundImage: `url('${commander ? commander.image_uri : ""})` }}>
-          <button onClick={() => { toggleArt() }}>Change Art</button>
+        <div className={`w-full aspect-2/1 bg-cover rounded-lg flex flex-col items-end justify-between`} style={{ backgroundImage: `radial-gradient(transparent, #00000088), url('${commander ? commander.image_uri : ""})` }}>
+          <button onClick={() => { toggleArt() }}>
+            <img src="/images/pen-svgrepo-com.svg" className="h-6 m-1"/>
+          </button>
           <p className="text-xs text-gray-300 px-1">{commander && commander.artist}</p>
         </div>
         <div className="px-4 pt-1">
