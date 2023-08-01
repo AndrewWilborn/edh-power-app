@@ -1,9 +1,7 @@
+import RatingLabel from "./RatingLabel"
 import {getColor, getGradient} from "./getColor"
 
 export default function Ratingbar({ rating }) {
-
-  const labelClasses = "font-bold w-1/3 text-center"
-
   return (
     <>
       <div className="w-full h-7 bg-gray-400 rounded-full mb-1 p-0.5">
@@ -15,11 +13,7 @@ export default function Ratingbar({ rating }) {
             }}></div>
         </div>
       </div>
-      <div className="flex">
-        <h2 style={{ color: "#bef264" }} className={labelClasses} >Low</h2>
-        <h2 style={{ color: "#ffaa10" }} className={labelClasses} >Mid</h2>
-        <h2 style={{ color: "#ef4444" }} className={labelClasses} >🌶️High🌶️</h2>
-      </div>
+      <RatingLabel />
     </>
   )
 }

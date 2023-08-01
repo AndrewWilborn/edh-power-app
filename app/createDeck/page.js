@@ -3,6 +3,9 @@
 import { AuthContext } from "@/context/AuthContext"
 import { useRouter } from "next/navigation"
 import { useContext, useState } from "react"
+import RatingLabel from "../shared/RatingLabel"
+import { getGradient } from "../shared/getColor"
+import '../shared/slider.css'
 
 export default function createDeck() {
 
@@ -115,9 +118,10 @@ export default function createDeck() {
               </div>
               <div className="p-2 w-full">
                 <div className="relative">
-                  <label htmlFor="rating" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Power Level, your rating for the deck</label>
-                  <input id="rating" type="range" min="0" max="1000" className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-700" />
+                  <label htmlFor="rating" className="block mb-2 text-sm text-gray-400">Power Level</label>
+                  <input id="rating" type="range" min="0" max="1000" className="w-full h-2 rounded-lg appearance-none cursor-pointer" style={{background: `${getGradient(100)}`}} />
                 </div>
+                <RatingLabel />
               </div>
               <div className="p-2 w-full">
                 <input type="submit" value="Create Deck" className="flex justify-center w-full mx-auto text-white bg-green-500 border-0 py-2 focus:outline-none hover:bg-green-600 rounded text-md" />

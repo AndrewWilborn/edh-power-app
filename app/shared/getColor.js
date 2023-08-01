@@ -1,4 +1,4 @@
-const lowColor = [190, 242, 100]
+const lowColor = [74, 222, 128]
 const midColor = [255, 170, 16]
 const highColor = [239, 68, 68]
 
