@@ -49,7 +49,7 @@ export default function Card({ deck, handleQR }) {
             <div className="h-6 bg-blue-600 rounded-full dark:bg-blue-500" style={{ width: `${deck.avg_rating / 10}%` }}></div>
           </div>
           <h2>Joke Low Mid High Very High</h2>
-          <h3 className={h3Style}>{deck.num_ratings} Ratings</h3>
+          <h3 className={h3Style}>{deck.num_ratings} Rating{deck.num_ratings !== 1 && 's'}</h3>
           {deck.decklist_url && <h3 className={h3Style}>{deck.decklist_url}</h3>}
           {
             ((user && user.uid) == (deck && deck.owner)) &&
