@@ -2,6 +2,7 @@
 
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "@/context/AuthContext"
+import Ratingbar from "./Ratingbar"
 
 export default function Card({ deck, handleQR }) {
 
@@ -45,10 +46,7 @@ export default function Card({ deck, handleQR }) {
         <div className="px-4 pt-1">
           <h2 className="text-lg text-white font-medium title-font mb-1">{deck.deck_name}</h2>
           <h3 className={h3Style}>Commander: {commander ? commander.name : ""}{partner && " and " + partner.name}</h3>
-          <div className="w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700 mb-1">
-            <div className="h-6 bg-blue-600 rounded-full dark:bg-blue-500" style={{ width: `${deck.avg_rating / 10}%` }}></div>
-          </div>
-          <h2>Joke Low Mid High Very High</h2>
+          <Ratingbar rating={deck.avg_rating}/>
           <h3 className={h3Style}>{deck.num_ratings} Rating{deck.num_ratings !== 1 && 's'}</h3>
           {deck.decklist_url && <h3 className={h3Style}>{deck.decklist_url}</h3>}
           {
