@@ -20,8 +20,6 @@ export default function Card({ deck, handleQR }) {
       .catch(alert)
   }, [setCommander, setPartner])
 
-  const [showDropdown, setShowDropdown] = useState(false)
-
   const toggleArt = () => {
     fetch(`http://localhost:5001/toggleArt/${deck.id}`)
       .then(response => response.json())
@@ -40,7 +38,7 @@ export default function Card({ deck, handleQR }) {
       <div className="bg-gray-800 bg-opacity-40 rounded-lg">
         <div className={`w-full aspect-2/1 bg-cover rounded-lg flex flex-col items-end justify-between`} style={{ backgroundImage: `radial-gradient(transparent, #00000088), url('${commander ? commander.image_uri : ""})` }}>
           <button onClick={() => { toggleArt() }}>
-            <img src="/images/pen-svgrepo-com.svg" className="h-6 m-1"/>
+            <img src="/images/pen-svgrepo-com.svg" className="h-6 m-1" />
           </button>
           <p className="text-xs text-gray-300 px-1">{commander && commander.artist}</p>
         </div>
@@ -53,12 +51,13 @@ export default function Card({ deck, handleQR }) {
           <h2>Joke Low Mid High Very High</h2>
           <h3 className={h3Style}>{deck.num_ratings} Ratings</h3>
           {deck.decklist_url && <h3 className={h3Style}>{deck.decklist_url}</h3>}
+          {
+            ((user && user.uid) == (deck && deck.owner)) &&
+            <button className=""
+              onClick={() => { handleQR("LONG STRING THIS STIRNG IS VERY VERY VERY LONG LONG STRING ITS LONG") }}>
+              Get Ratings</button>
+          }
         </div>
-        {showDropdown
-          ? <button onClick={() => { handleQR("LONG STRING THIS STIRNG IS VERY VERY VERY LONG LONG STRING ITS LONG") }}>Button</button>
-          : ((user && user.uid) == (deck && deck.owner))
-          && <button onClick={() => { setShowDropdown(true) }}>Show Dropdown</button>
-        }
       </div>
     </div>
   )
