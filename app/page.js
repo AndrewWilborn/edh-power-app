@@ -41,24 +41,26 @@ export default function Home() {
             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">{user ? "My Decks" : "All Decks"}</h1>
             <div className="h-1 w-20 bg-orange-500 rounded"></div>
           </div>
-          {
-            user &&
-            <Link href="/createDeck" type="button" className="mb-4 py-2 px-4 bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white transition mx-auto p-10 ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg">
+        </div>
+        {
+          user &&
+          <div className="flex flex-wrap w-full">
+            <Link href="/createDeck" type="button" className="mb-4 py-2 px-6 md:px-16 bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white transition mx-auto p-10 ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg">
               + New Deck
             </Link>
-          }
-        </div>
+          </div>
+        }
 
         <div className="flex flex-wrap -m-4">
           {!decks
             ? <p>Loading...</p>
             : decks.map(deck =>
-              <Card deck={deck} key={deck.id} handleQR={handleQR}/>
+              <Card deck={deck} key={deck.id} handleQR={handleQR} />
             )
           }
         </div>
       </div>
-      {showQR && <QRCode url={QRString} setShowQR={setShowQR}/>}
+      {showQR && <QRCode url={QRString} setShowQR={setShowQR} />}
     </section>
   )
 }
