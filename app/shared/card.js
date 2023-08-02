@@ -52,7 +52,7 @@ export default function Card({ deck, handleQR }) {
           {
             ((user && user.uid) == (deck && deck.owner)) &&
             <button className=""
-              onClick={() => { handleQR("LONG STRING THIS STIRNG IS VERY VERY VERY LONG LONG STRING ITS LONG") }}>
+              onClick={() => { handleQR(`http://localhost:3000/rate/${deck.id}`) }}>
               Get Ratings</button>
           }
         </div>
