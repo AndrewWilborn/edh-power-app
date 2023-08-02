@@ -7,7 +7,7 @@ import { AuthContext, auth } from "@/context/AuthContext";
 import Link from "next/link";
 
 
-export default function LoginForm() {
+export default function LoginForm({ isModal }) {
   const { handleLogin } = useContext(AuthContext)
 
   const router = useRouter();
@@ -18,7 +18,7 @@ export default function LoginForm() {
       .then((result) => {
         handleLogin(result)
         // use router to send user back to home page
-        router.push("/");
+        !isModal && router.push("/");
       })
       .catch((err) => alert(err.message));
   }
@@ -31,7 +31,7 @@ export default function LoginForm() {
       .then((result) => {
         handleLogin(result)
         // use router to send user back to home page
-        router.push("/");
+        !isModal && router.push("/");
       })
       .catch((err) => alert(err.message));
   }
@@ -73,7 +73,12 @@ export default function LoginForm() {
         </div>
       </form>
       <div className="my-2">
-        <Link href="/signup">Create Account</Link>
+        {isModal
+          ? <button className="hover:underline"
+            onClick={() => {isModal(false)}}>Create Account</button>
+          : <Link className="hover:underline"
+            href="/signup">Create Account</Link>
+        }
       </div>
     </div>
   )

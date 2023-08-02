@@ -7,22 +7,26 @@ import { AuthContext } from "@/context/AuthContext"
 import { useRouter } from "next/navigation"
 import { useContext, useEffect, useState } from "react"
 import "../../shared/slider.css"
+import SignupForm from "@/app/signup/SignupForm"
+import LoginForm from "@/app/login/LoginForm"
 
-export default function rate({ params: {deckid} }) {
+export default function rate({ params: { deckid } }) {
 
   const { user } = useContext(AuthContext)
 
   const router = useRouter()
 
-  const [deck, setDeck] = useState();
-  
+  const [deck, setDeck] = useState()
+
+  const [isLogin, setIsLogin] = useState()
+
   useEffect(() => {
     fetch(`http://localhost:5001/deckById/${deckid}`)
-    .then(response => response.json())
-    .then(data => {
-      setDeck(data)
-    })
-    .catch(alert)
+      .then(response => response.json())
+      .then(data => {
+        setDeck(data)
+      })
+      .catch(alert)
   }, [])
 
   const handleSubmit = async (e) => {
@@ -46,32 +50,39 @@ export default function rate({ params: {deckid} }) {
     }
   }
 
+
   return (
     <section className="text-gray-400 bg-gray-900 body-font relative">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-col text-center w-full mb-4">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Rate Deck</h1>
-        </div>
-        {deck &&
-          <Card deck={deck}/>
-        }
-        <form onSubmit={handleSubmit}>
-          <div className="lg:w-1/2 md:w-2/3 mx-auto">
-            <div className="flex flex-wrap -m-2">
-              <div className="p-2 w-full">
-              <div className="relative">
-                  <label htmlFor="rating" className="block mb-2 text-sm text-gray-400">Power Level</label>
-                  <input id="rating" type="range" min="1" max="1000" className="w-full h-2 rounded-lg appearance-none cursor-pointer" style={{background: `${getGradient(100)}`}} />
+      {user
+        ?
+        <div className="container px-5 py-24 mx-auto">
+          <div className="flex flex-col text-center w-full mb-4">
+            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Rate Deck</h1>
+          </div>
+          {deck &&
+            <Card deck={deck} />
+          }
+          <form onSubmit={handleSubmit}>
+            <div className="lg:w-1/2 md:w-2/3 mx-auto">
+              <div className="flex flex-wrap -m-2">
+                <div className="p-2 w-full">
+                  <div className="relative">
+                    <label htmlFor="rating" className="block mb-2 text-sm text-gray-400">Power Level</label>
+                    <input id="rating" type="range" min="1" max="1000" className="w-full h-2 rounded-lg appearance-none cursor-pointer" style={{ background: `${getGradient(100)}` }} />
+                  </div>
+                  <RatingLabel />
                 </div>
-                <RatingLabel />
-              </div>
-              <div className="p-2 w-full">
-                <input type="submit" value="Submit Rating" className="flex justify-center w-full mx-auto text-white bg-green-500 border-0 py-2 focus:outline-none hover:bg-green-600 rounded text-md" />
+                <div className="p-2 w-full">
+                  <input type="submit" value="Submit Rating" className="flex justify-center w-full mx-auto text-white bg-green-500 border-0 py-2 focus:outline-none hover:bg-green-600 rounded text-md" />
+                </div>
               </div>
             </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
+        :
+        isLogin ? <LoginForm isModal={setIsLogin}/>
+        : <SignupForm isModal={setIsLogin}/>
+      }
     </section>
   )
 }

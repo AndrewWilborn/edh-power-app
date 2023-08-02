@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AuthContext, auth } from "@/context/AuthContext"
 import Link from "next/link";
 
-export default function SignupForm() {
+export default function SignupForm({ isModal }) {
   const { handleLogin } = useContext(AuthContext);
 
   const router = useRouter();
@@ -17,7 +17,7 @@ export default function SignupForm() {
       .then((result) => {
         handleLogin(result)
         // use router to send user back to home page
-        router.push("/");
+        !isModal && router.push("/");
       })
       .catch((err) => alert(err.message));
   }
@@ -30,7 +30,7 @@ export default function SignupForm() {
       .then((result) => {
         handleLogin(result);
         // use router to send user back to home page
-        router.push("/");
+        !isModal && router.push("/");
       })
       .catch((err) => alert(err.message));
   }
@@ -72,7 +72,12 @@ export default function SignupForm() {
         </div>
       </form>
       <div className="my-2">
-        <Link href="/login">Already have an account? Log In</Link>
+        {isModal
+          ? <button className="hover:underline"
+          onClick={() => {isModal(true)}}>Already have an account? Log In</button>
+          : <Link className="hover:underline"
+            href="/login">Already have an account? Log In</Link>
+        }
       </div>
     </div>
   )
