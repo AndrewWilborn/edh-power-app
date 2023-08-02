@@ -1,13 +1,10 @@
 "use client"
 
-import { useContext, useEffect, useState } from "react"
-import { AuthContext } from "@/context/AuthContext"
+import { useEffect, useState } from "react"
 import Ratingbar from "./Ratingbar"
+import Link from "next/link"
 
 export default function Card({ deck, handleQR }) {
-
-  const { user } = useContext(AuthContext)
-
   const [showDropdown, setShowDropdown] = useState(false)
 
   const [commander, setCommander] = useState()
@@ -64,11 +61,11 @@ export default function Card({ deck, handleQR }) {
                       <img src="/images/qrcode-solid.svg" className="h-6 m-1" />
                       <p>Get Ratings</p>
                     </button>
-                    <button className="flex flex-col"
-                      onClick={() => { /* go to edit deck */ }}>
+                    <Link className="flex flex-col"
+                      href={`/edit/${deck.id}`}>
                       <img src="/images/pen-svgrepo-com.svg" className="h-6 m-1" />
                       <p>Edit</p>
-                    </button>
+                    </Link>
                   </div>
                 }
                 <button className="mx-auto w-full"
