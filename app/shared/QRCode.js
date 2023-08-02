@@ -7,7 +7,9 @@ export default function QRCode({ url, setShowQR }) {
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
       <div className="bg-gray-950 p-10 rounded-lg">
-        <button className="absolute top-0 right-0 p-2 px-4" onClick={() => {setShowQR(false)}}>Test</button>
+        <button className="absolute top-0 right-0 p-2 px-4" onClick={() => { setShowQR(false) }}>
+          Close
+        </button>
         <Canvas
           text={url}
           options={{
@@ -16,11 +18,13 @@ export default function QRCode({ url, setShowQR }) {
             scale: 4,
             width: 350,
             color: {
-              dark: '#000000FF',
-              light: '#FFFFFFFF',
+              dark: '#18181b',
+              light: '#f4f4f5',
             },
           }} />
-      <a href={url} className="pt-2 text-blue-500 hover:underline">{url}</a>
+        <div className="w-80 mt-4">
+          <a href={url} className="pt-2 text-blue-500 hover:underline">{url}</a>
+        </div>
       </div>
     </div>
   )
