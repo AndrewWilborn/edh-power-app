@@ -37,7 +37,7 @@ export default function Card({ deck, handleQR }) {
   const h3Style = "tracking-widest text-orange-400 text-xs font-medium title-font mb-1";
 
   return (
-    <div className="xl:w-1/3 md:w-1/2 w-full p-4">
+    <div className="xl:w-1/3 md:w-1/2 w-full px-4 my-2">
       <div className="bg-gray-800 bg-opacity-40 rounded-lg">
         <div className={`w-full aspect-16/7 bg-cover rounded-lg flex flex-col items-end justify-between`} style={{ backgroundImage: `radial-gradient(transparent, #00000088), url('${commander ? commander.image_uri : ""})` }}>
           <button onClick={() => { toggleArt() }}>
@@ -49,7 +49,8 @@ export default function Card({ deck, handleQR }) {
           </div>
         </div>
         <div className="px-4 pt-1">
-          <h3 className={h3Style}>Commander: {commander ? commander.name : ""}{partner && " and " + partner.name}</h3>
+          <h3 className={h3Style}>Commander: {commander ? commander.name : ""}</h3>
+          {partner && <h3 className={h3Style}>And: {partner.name}</h3>}
           <Ratingbar rating={deck.avg_rating} />
           <h3 className={h3Style}>{deck.num_ratings} Rating{deck.num_ratings !== 1 && 's'}</h3>
           {deck.decklist_url && <h3 className={h3Style}>{deck.decklist_url}</h3>}
