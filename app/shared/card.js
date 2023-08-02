@@ -55,7 +55,7 @@ export default function Card({ deck, handleQR }) {
           <h3 className={h3Style}>{deck.num_ratings} Rating{deck.num_ratings !== 1 && 's'}</h3>
           {deck.decklist_url && <h3 className={h3Style}>{deck.decklist_url}</h3>}
           {
-            ((user && user.uid) == (deck && deck.owner)) && (
+            deck.owner &&
               <>
                 {showDropdown &&
                   <div className="flex w-full justify-around">
@@ -74,7 +74,6 @@ export default function Card({ deck, handleQR }) {
                 <button className="mx-auto w-full"
                   onClick={() => { setShowDropdown(!showDropdown) }}>Show Dropdown</button>
               </>
-            )
           }
         </div>
       </div>
