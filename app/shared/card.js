@@ -39,21 +39,23 @@ export default function Card({ deck, handleQR }) {
       <div className="bg-gray-800 bg-opacity-40 rounded-lg">
         <div className={`w-full aspect-2/1 bg-cover rounded-lg flex flex-col items-end justify-between`} style={{ backgroundImage: `radial-gradient(transparent, #00000088), url('${commander ? commander.image_uri : ""})` }}>
           <button onClick={() => { toggleArt() }}>
-            <img src="/images/pen-svgrepo-com.svg" className="h-6 m-1" />
+            <img src="/images/image-regular.svg" className="h-6 m-1" />
           </button>
           <p className="text-xs text-gray-300 px-1">{commander && commander.artist}</p>
         </div>
         <div className="px-4 pt-1">
           <h2 className="text-lg text-white font-medium title-font mb-1">{deck.deck_name}</h2>
           <h3 className={h3Style}>Commander: {commander ? commander.name : ""}{partner && " and " + partner.name}</h3>
-          <Ratingbar rating={deck.avg_rating}/>
+          <Ratingbar rating={deck.avg_rating} />
           <h3 className={h3Style}>{deck.num_ratings} Rating{deck.num_ratings !== 1 && 's'}</h3>
           {deck.decklist_url && <h3 className={h3Style}>{deck.decklist_url}</h3>}
           {
             ((user && user.uid) == (deck && deck.owner)) &&
-            <button className=""
+            <button className="flex align-center flex-col"
               onClick={() => { handleQR(`http://localhost:3000/rate/${deck.id}`) }}>
-              Get Ratings</button>
+              <img src="/images/qrcode-solid.svg" className="h-6 m-1" />
+              <p>Get Ratings</p>
+            </button>
           }
         </div>
       </div>
