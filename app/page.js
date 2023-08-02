@@ -15,7 +15,11 @@ export default function Home() {
     fetch(`http://localhost:5001/decks/${user ? user.uid : ""}`)
       .then(response => response.json())
       .then(data => {
-        data.sort((a, b) => b.timestamp - a.timestamp)
+        if(user){
+          data.sort((a, b) => b.avg_rating - a.avg_rating)
+        } else{
+          data.sort((a, b) => b.timestamp - a.timestamp)
+        }
         setDecks(data)
       })
       .catch(alert)
