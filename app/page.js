@@ -4,6 +4,7 @@ import Card from "./shared/Card";
 import Link from "next/link";
 import { AuthContext } from "@/context/AuthContext";
 import QRCode from "./shared/QRCode";
+import Hero from "./shared/Hero";
 
 export default function Home() {
 
@@ -36,13 +37,11 @@ export default function Home() {
     <section className="text-gray-400 body-font bg-gray-900">
       <div className="container px-5 py-24 mx-auto">
         {!user &&
-          <>
-            <h2 className="text-white">Hero with CTA to signup</h2>
-          </>
+          <Hero />
         }
         <div className="flex flex-wrap w-full">
           <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
-            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">{user ? "My Decks" : "All Decks"}</h1>
+            <h2 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">{user ? "My Decks" : "All Decks"}</h2>
             <div className="h-1 w-20 bg-orange-500 rounded"></div>
           </div>
         </div>
