@@ -58,15 +58,15 @@ export default function Card({ deck, handleQR }) {
             <>
               {showDropdown &&
                 <div className="flex w-full justify-around">
-                  <button className="flex flex-col"
+                  <button className="flex flex-col w-1/2"
                     onClick={() => { handleQR(`http://localhost:3000/rate/${deck.id}`) }}>
-                    <img src="/images/qrcode-solid.svg" className="h-6 m-1" />
-                    <p>Get Ratings</p>
+                    <img src="/images/qrcode-solid.svg" className="h-6 m-1 w-full text-center" />
+                    <p className="w-full text-center">Get Ratings</p>
                   </button>
-                  <Link className="flex flex-col"
+                  <Link className="flex flex-col w-1/2"
                     href={`/edit/${deck.id}`}>
-                    <img src="/images/pen-svgrepo-com.svg" className="h-6 m-1" />
-                    <p>Edit</p>
+                    <img src="/images/pen-svgrepo-com.svg" className="h-6 m-1 w-full text-center" />
+                    <p className="w-full text-center">Edit Deck</p>
                   </Link>
                 </div>
               }
