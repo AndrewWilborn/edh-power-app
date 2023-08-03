@@ -10,21 +10,21 @@ export default function Card({ deck, handleQR }) {
   const [commander, setCommander] = useState()
   const [partner, setPartner] = useState()
   useEffect(() => {
-    fetch(`http://localhost:5001/cards/${deck.commander}`)
+    fetch(`https://edh-power-api.azurewebsites.net/cards/${deck.commander}`)
       .then(response => response.json())
       .then(data => setCommander(data))
       .catch(alert)
-    deck.partner && fetch(`http://localhost:5001/cards/${deck.partner}`)
+    deck.partner && fetch(`https://edh-power-api.azurewebsites.net/cards/${deck.partner}`)
       .then(response => response.json())
       .then(data => setPartner(data))
       .catch(alert)
   }, [setCommander, setPartner])
 
   const toggleArt = () => {
-    fetch(`http://localhost:5001/toggleArt/${deck.id}`)
+    fetch(`https://edh-power-api.azurewebsites.net/toggleArt/${deck.id}`)
       .then(response => response.json())
       .then(data => {
-        fetch(`http://localhost:5001/cards/${data.newId}`)
+        fetch(`https://edh-power-api.azurewebsites.net/cards/${data.newId}`)
           .then(response => response.json())
           .then(data => setCommander(data))
       })

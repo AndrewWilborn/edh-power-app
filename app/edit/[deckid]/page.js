@@ -11,7 +11,7 @@ export default function editDeck({ params: { deckid } }) {
   const { user } = useContext(AuthContext)
 
   const handleDelete = async () => {
-    await fetch(`http://localhost:5001/decks/${deckid}`, {
+    await fetch(`https://edh-power-api.azurewebsites.net/decks/${deckid}`, {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',

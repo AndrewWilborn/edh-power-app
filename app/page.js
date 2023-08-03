@@ -13,7 +13,7 @@ export default function Home() {
   const { user } = useContext(AuthContext)
 
   useEffect(() => {
-    fetch(`http://localhost:5001/decks/${user ? user.uid : ""}`)
+    fetch(`https://edh-power-api.azurewebsites.net/decks/${user ? user.uid : ""}`)
       .then(response => response.json())
       .then(data => {
         if(user){

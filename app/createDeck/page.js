@@ -41,7 +41,7 @@ export default function createDeck() {
       }
 
       // Post deck to database
-      const postResponse = await fetch("http://localhost:5001/decks", {
+      const postResponse = await fetch("https://edh-power-api.azurewebsites.net/decks", {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -57,7 +57,7 @@ export default function createDeck() {
       })
       const deckId = await postResponse.json()
       const ratingVal = e.target.rating.value
-      await fetch("http://localhost:5001/ratings", {
+      await fetch("https://edh-power-api.azurewebsites.net/ratings", {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
