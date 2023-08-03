@@ -6,24 +6,26 @@ export default function QRCode({ url, setShowQR }) {
 
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-      <div className="bg-gray-950 p-10 rounded-lg">
-        <button className="absolute top-0 right-0 p-2 px-4" onClick={() => { setShowQR(false) }}>
-          Close
+      <div className="bg-gray-300 w-96 rounded-lg flex flex-col align-middle p-4">
+        <button className="p-2 px-4 self-end" onClick={() => { setShowQR(false) }}>
+          <img src="images/iconmonstr-x-mark-4.svg"/>
         </button>
-        <Canvas
-          text={url}
-          options={{
-            level: 'M',
-            margin: 3,
-            scale: 4,
-            width: 350,
-            color: {
-              dark: '#18181b',
-              light: '#f4f4f5',
-            },
-          }} />
-        <div className="w-80 mt-4">
-          <a href={url} className="pt-2 text-blue-500 hover:underline">{url}</a>
+        <div className="mx-auto mt-2">
+          <Canvas
+            text={url}
+            options={{
+              level: 'M',
+              margin: 3,
+              scale: 4,
+              width: 250,
+              color: {
+                dark: '#18181b',
+                light: '#f4f4f5',
+              },
+            }} />
+        </div>
+        <div className="w-80 mt-6 container mx-auto bg-zinc-100 rounded-md p-1">
+          <h3 className="text-slate-900 font-bold">Link: <a href={url} className="pt-2 text-blue-700 hover:underline font-normal">{url}</a></h3>
         </div>
       </div>
     </div>
