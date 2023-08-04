@@ -36,7 +36,7 @@ export default function SignupForm({ isModal }) {
   }
 
   return (
-    <div className="container px-5 py-24 mx-auto">
+    <div className="container px-5 py-24 mx-auto lg:w-1/2">
       <div className="flex flex-col text-center w-full mb-4">
         <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Sign Up</h1>
       </div>
@@ -51,7 +51,7 @@ export default function SignupForm({ isModal }) {
         <h2 className="sm:text-xl text-l font-medium title-font mb-4 text-white">Use Email and Password</h2>
       </div>
       <form onSubmit={handleSignup}>
-        <div className="lg:w-1/2 md:w-2/3 mx-auto">
+        <div className="lg:w-full md:w-2/3 mx-auto">
           <div className="flex flex-wrap -m-2">
             <div className="p-2 w-full">
               <div className="relative">
