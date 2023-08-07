@@ -3,7 +3,7 @@
 import { useContext, useEffect, useState } from "react"
 import Ratingbar from "./Ratingbar"
 import Link from "next/link"
-import { AuthContext } from "@/context/AuthContext"
+import { AuthContext } from "@/app/context/AuthContext"
 
 export default function Card({ deck, handleQR }) {
   const [showDropdown, setShowDropdown] = useState(false)

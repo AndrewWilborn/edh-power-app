@@ -3,7 +3,7 @@
 import Card from "@/app/shared/Card"
 import RatingLabel from "@/app/shared/RatingLabel"
 import { getGradient } from "@/app/shared/getColor"
-import { AuthContext } from "@/context/AuthContext"
+import { AuthContext } from "@/app/context/AuthContext"
 import { useRouter } from "next/navigation"
 import { useContext, useEffect, useState } from "react"
 import "../../shared/slider.css"

@@ -3,7 +3,7 @@
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
-import { AuthContext, auth } from "@/context/AuthContext";
+import { AuthContext, auth } from "@/app/context/AuthContext";
 import Link from "next/link";
 
 

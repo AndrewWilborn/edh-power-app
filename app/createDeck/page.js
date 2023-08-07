@@ -1,6 +1,6 @@
 "use client"
 
-import { AuthContext } from "@/context/AuthContext"
+import { AuthContext } from "@/app/context/AuthContext"
 import { useRouter } from "next/navigation"
 import { useContext, useState } from "react"
 import RatingLabel from "../shared/RatingLabel"
