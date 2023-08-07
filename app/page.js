@@ -2,7 +2,7 @@
 import { useContext, useEffect, useState } from "react"
 import Card from "./shared/Card";
 import Link from "next/link";
-import { AuthContext } from "@/app/context/AuthContext";
+import { AuthContext } from "@/context/AuthContext";
 import QRCode from "./shared/QRCode";
 import Hero from "./shared/Hero";
 

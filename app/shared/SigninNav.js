@@ -1,6 +1,6 @@
 "use client"
 
-import { AuthContext } from "@/app/context/AuthContext"
+import { AuthContext } from "@/context/AuthContext"
 import Link from "next/link"
 import { useContext } from "react"
 import UserDropdown from "./UserDropdown"
