@@ -59,9 +59,11 @@ export default function rate({ params: { deckid } }) {
           <div className="flex flex-col text-center w-full mb-4">
             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Rate Deck</h1>
           </div>
-          {deck &&
-            <Card deck={deck} />
-          }
+          <div className="flex justify-center">
+            {deck &&
+              <Card deck={deck} />
+            }
+          </div>
           <form onSubmit={handleSubmit}>
             <div className="lg:w-1/2 md:w-2/3 mx-auto">
               <div className="flex flex-wrap -m-2">
@@ -80,8 +82,8 @@ export default function rate({ params: { deckid } }) {
           </form>
         </div>
         :
-        isLogin ? <LoginForm isModal={setIsLogin}/>
-        : <SignupForm isModal={setIsLogin}/>
+        isLogin ? <LoginForm isModal={setIsLogin} />
+          : <SignupForm isModal={setIsLogin} />
       }
     </section>
   )
