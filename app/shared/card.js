@@ -39,9 +39,9 @@ export default function Card({ deck, handleQR }) {
         <div className={`w-full aspect-16/7 bg-cover rounded-lg flex flex-col items-end justify-between`} style={{ backgroundImage: `radial-gradient(transparent, #00000088), url('${commander ? commander.image_uri : ""})` }}>
           <div className="flex justify-between w-full">
             {deck.decklist_url ? <a href={deck.decklist_url} className="h-6 m-1"><p className="text-gray-300 text-xs">View Decklist</p></a> : <div />}
-            <button onClick={() => { toggleArt() }}>
+            {user && <button onClick={() => { toggleArt() }}>
               <img src="/images/image-regular.svg" className="h-6 m-1" />
-            </button>
+            </button>}
           </div>
           <div className="flex justify-between w-full">
             <h2 className="text-lg text-white font-medium title-font px-1">{deck.deck_name}</h2>
