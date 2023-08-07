@@ -1,11 +1,14 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Ratingbar from "./Ratingbar"
 import Link from "next/link"
+import { AuthContext } from "@/context/AuthContext"
 
 export default function Card({ deck, handleQR }) {
   const [showDropdown, setShowDropdown] = useState(false)
+
+  const { user } = useContext(AuthContext)
 
   const [commander, setCommander] = useState()
   const [partner, setPartner] = useState()
@@ -38,7 +41,7 @@ export default function Card({ deck, handleQR }) {
       <div className="bg-gray-800 bg-opacity-40 rounded-lg">
         <div className={`w-full aspect-16/7 bg-cover rounded-lg flex flex-col items-end justify-between`} style={{ backgroundImage: `radial-gradient(transparent, #00000088), url('${commander ? commander.image_uri : ""})` }}>
           <div className="flex justify-between w-full">
-            {deck.decklist_url ? <a href={deck.decklist_url} className="h-6 m-1"><p className="text-gray-300 text-xs">View Decklist</p></a> : <div />}
+            {deck.decklist_url ? <a href={deck.decklist_url} className="h-6 m-1"><p className="text-gray-300 text-xs hover:underline">View Decklist</p></a> : <div />}
             {user && <button onClick={() => { toggleArt() }}>
               <img src="/images/image-regular.svg" className="h-6 m-1" />
             </button>}
