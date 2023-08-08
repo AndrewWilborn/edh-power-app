@@ -70,7 +70,7 @@ export default function createDeck() {
       })
       router.push('/')
     } catch (error) {
-      alert(error)
+      console.error(error.message)
     }
   }
 

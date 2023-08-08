@@ -17,9 +17,9 @@ export default function SignupForm({ isModal }) {
       .then((result) => {
         handleLogin(result)
         // use router to send user back to home page
-        !isModal && router.push("/");
+        !isModal && router.push("/")
       })
-      .catch((err) => alert(err.message));
+      .catch(err => (console.error(err.message)))
   }
 
   const handleSignup = (e) => {
@@ -30,9 +30,9 @@ export default function SignupForm({ isModal }) {
       .then((result) => {
         handleLogin(result);
         // use router to send user back to home page
-        !isModal && router.push("/");
+        !isModal && router.push("/")
       })
-      .catch((err) => alert(err.message));
+      .catch(err => (console.error(err.message)))
   }
 
   return (

@@ -32,7 +32,11 @@ export function AuthProvider({ children }) {
   }
 
   const handleLogout = () => {
-    setUser()
+    auth.signOut()
+      .then(() => {setUser(null)})
+      .catch((error) => {
+        console.error("Error signing out:", error)
+      })
   }
 
   return <AuthContext.Provider value={{ user, handleLogin, handleLogout }}>

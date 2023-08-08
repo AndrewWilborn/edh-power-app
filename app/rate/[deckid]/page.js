@@ -26,7 +26,7 @@ export default function rate({ params: { deckid } }) {
       .then(data => {
         setDeck(data)
       })
-      .catch(alert)
+      .catch(err => (console.error(err.message)))
   }, [])
 
   const handleSubmit = async (e) => {
@@ -46,7 +46,7 @@ export default function rate({ params: { deckid } }) {
       })
       router.push('/')
     } catch (error) {
-      alert(error);
+      console.error(error.message)
     }
   }
 

@@ -23,7 +23,7 @@ export default function Home() {
         }
         setDecks(data)
       })
-      .catch(alert)
+      .catch(err => (console.error(err.message)))
   }, [setDecks, user])
 
   const [showQR, setShowQR] = useState(false)

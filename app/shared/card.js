@@ -16,11 +16,11 @@ export default function Card({ deck, handleQR }) {
     fetch(`https://edh-power-api.azurewebsites.net/cards/${deck.commander}`)
       .then(response => response.json())
       .then(data => setCommander(data))
-      .catch(alert)
+      .catch(err => (console.error(err.message)))
     deck.partner && fetch(`https://edh-power-api.azurewebsites.net/cards/${deck.partner}`)
       .then(response => response.json())
       .then(data => setPartner(data))
-      .catch(alert)
+      .catch(err => (console.error(err.message)))
   }, [setCommander, setPartner])
 
   const toggleArt = () => {
@@ -31,7 +31,7 @@ export default function Card({ deck, handleQR }) {
           .then(response => response.json())
           .then(data => setCommander(data))
       })
-      .catch(alert)
+      .catch(err => (console.error(err.message)))
   }
 
   const h3Style = "tracking-widest text-orange-400 text-xs font-medium title-font mb-1";

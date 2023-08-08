@@ -1,16 +1,16 @@
 "use client"
 
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
-import { AuthContext, auth } from "@/context/AuthContext";
-import Link from "next/link";
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { useRouter } from "next/navigation"
+import { useContext } from "react"
+import { AuthContext, auth } from "@/context/AuthContext"
+import Link from "next/link"
 
 
 export default function LoginForm({ isModal }) {
   const { handleLogin } = useContext(AuthContext)
 
-  const router = useRouter();
+  const router = useRouter()
 
   const handleGoogle = () => {
     const provider = new GoogleAuthProvider();
@@ -18,22 +18,22 @@ export default function LoginForm({ isModal }) {
       .then((result) => {
         handleLogin(result)
         // use router to send user back to home page
-        !isModal && router.push("/");
+        !isModal && router.push("/")
       })
-      .catch((err) => alert(err.message));
+      .catch(err => (console.error(err.message)))
   }
 
   const handleLoginWithEmailAndPassword = (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    const email = e.target.email.value
+    const password = e.target.password.value
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         handleLogin(result)
         // use router to send user back to home page
-        !isModal && router.push("/");
+        !isModal && router.push("/")
       })
-      .catch((err) => alert(err.message));
+      .catch(err => (console.error(err.message)))
   }
 
   return (
