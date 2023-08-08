@@ -1,8 +1,8 @@
 "use client"
-import { AuthContext } from "@/context/AuthContext";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useContext } from "react"
 
 export default function editDeck({ params: { deckid } }) {
 

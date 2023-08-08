@@ -1,34 +1,34 @@
 "use client"
 
-import { useContext, useRef, useState } from "react";
-import { AuthContext } from "@/context/AuthContext";
-import Link from "next/link";
+import { useContext, useRef, useState } from "react"
+import { AuthContext } from "@/context/AuthContext"
+import Link from "next/link"
 
 export default function UserDropdown() {
 
-  const ref = useRef();
+  const ref = useRef()
 
-  const { handleLogout } = useContext(AuthContext);
+  const { handleLogout } = useContext(AuthContext)
 
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false)
 
   const listener = (e) => {
     // Do nothing if clicking ref's element or descendent elements
     if (!ref?.current || ref.current.contains(e.target)) {
-      return;
+      return
     }
-    setShowDropdown(false);
-      document.removeEventListener('mousedown', listener);
-      document.removeEventListener('touchstart', listener);
-  };
+    setShowDropdown(false)
+      document.removeEventListener('mousedown', listener)
+      document.removeEventListener('touchstart', listener)
+  }
 
   const toggleDropdown = () => {
     if (showDropdown) {
       setShowDropdown(false)
     } else {
       setShowDropdown(true)
-      document.addEventListener('mousedown', listener);
-      document.addEventListener('touchstart', listener);
+      document.addEventListener('mousedown', listener)
+      document.addEventListener('touchstart', listener)
     }
   }
 

@@ -12,10 +12,10 @@ const firebaseConfig = {
   storageBucket: "edh-power-auth.appspot.com",
   messagingSenderId: "455964869403",
   appId: "1:455964869403:web:9c52da1ec545527bf789be"
-};
+}
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+const app = initializeApp(firebaseConfig)
+export const auth = getAuth(app)
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState()

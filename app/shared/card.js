@@ -34,7 +34,7 @@ export default function Card({ deck, handleQR }) {
       .catch(err => (console.error(err.message)))
   }
 
-  const h3Style = "tracking-widest text-orange-400 text-xs font-medium title-font mb-1";
+  const h3Style = "tracking-widest text-orange-400 text-xs font-medium title-font mb-1"
 
   return (
     <div className="xl:w-1/3 md:w-1/2 w-full px-4 my-2">

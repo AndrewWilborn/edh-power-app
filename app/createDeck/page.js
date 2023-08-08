@@ -23,7 +23,7 @@ export default function createDeck() {
     let commanderName = e.target.commander.value
     commanderName = commanderName.trim()
     commanderName = commanderName.replace(" ", "+")
-    let partner = null;
+    let partner = null
     let partnerName = e.target.partner?.value
     if(partnerName){
       partnerName = partnerName.trim()

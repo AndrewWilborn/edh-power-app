@@ -1,18 +1,18 @@
 "use client"
 
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { useRouter } from "next/navigation"
+import { useContext } from "react"
 import { AuthContext, auth } from "@/context/AuthContext"
-import Link from "next/link";
+import Link from "next/link"
 
 export default function SignupForm({ isModal }) {
-  const { handleLogin } = useContext(AuthContext);
+  const { handleLogin } = useContext(AuthContext)
 
-  const router = useRouter();
+  const router = useRouter()
 
   const handleGoogle = () => {
-    const provider = new GoogleAuthProvider();
+    const provider = new GoogleAuthProvider()
     signInWithPopup(auth, provider)
       .then((result) => {
         handleLogin(result)
@@ -23,12 +23,12 @@ export default function SignupForm({ isModal }) {
   }
 
   const handleSignup = (e) => {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    e.preventDefault()
+    const email = e.target.email.value
+    const password = e.target.password.value
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
-        handleLogin(result);
+        handleLogin(result)
         // use router to send user back to home page
         !isModal && router.push("/")
       })

@@ -1,5 +1,5 @@
-import Link from "next/link";
-import SigninNav from "./SigninNav";
+import Link from "next/link"
+import SigninNav from "./SigninNav"
 
 export default function NavBar() {
 

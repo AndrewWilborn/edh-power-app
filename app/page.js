@@ -1,14 +1,14 @@
 "use client"
 import { useContext, useEffect, useState } from "react"
-import Card from "./shared/card";
-import Link from "next/link";
-import { AuthContext } from "@/context/AuthContext";
-import QRCode from "./shared/QRCode";
-import Hero from "./shared/Hero";
+import Card from "./shared/card"
+import Link from "next/link"
+import { AuthContext } from "@/context/AuthContext"
+import QRCode from "./shared/QRCode"
+import Hero from "./shared/Hero"
 
 export default function Home() {
 
-  const [decks, setDecks] = useState([]);
+  const [decks, setDecks] = useState([])
 
   const { user } = useContext(AuthContext)
 

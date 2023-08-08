@@ -13,7 +13,7 @@ export default function LoginForm({ isModal }) {
   const router = useRouter()
 
   const handleGoogle = () => {
-    const provider = new GoogleAuthProvider();
+    const provider = new GoogleAuthProvider()
     signInWithPopup(auth, provider)
       .then((result) => {
         handleLogin(result)
@@ -24,7 +24,7 @@ export default function LoginForm({ isModal }) {
   }
 
   const handleLoginWithEmailAndPassword = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const email = e.target.email.value
     const password = e.target.password.value
     signInWithEmailAndPassword(auth, email, password)
