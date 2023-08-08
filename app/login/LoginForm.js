@@ -56,13 +56,13 @@ export default function LoginForm({ isModal }) {
           <div className="flex flex-wrap -m-2">
             <div className="p-2 w-full">
               <div className="relative">
-                <label for="email" className="leading-7 text-sm text-gray-400">Email:</label>
+                <label htmlFor="email" className="leading-7 text-sm text-gray-400">Email:</label>
                 <input type="email" id="email" name="email" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-orange-500 focus:bg-gray-900 focus:ring-2 focus:ring-orange-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
               </div>
             </div>
             <div className="p-2 w-full">
               <div className="relative">
-                <label for="password" className="leading-7 text-sm text-gray-400">Password:</label>
+                <label htmlFor="password" className="leading-7 text-sm text-gray-400">Password:</label>
                 <input type="password" id="password" name="password" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-orange-500 focus:bg-gray-900 focus:ring-2 focus:ring-orange-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
               </div>
             </div>

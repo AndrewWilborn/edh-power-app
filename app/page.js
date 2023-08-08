@@ -1,6 +1,6 @@
 "use client"
 import { useContext, useEffect, useState } from "react"
-import Card from "./shared/Card";
+import Card from "./shared/card";
 import Link from "next/link";
 import { AuthContext } from "@/context/AuthContext";
 import QRCode from "./shared/QRCode";
