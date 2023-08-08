@@ -86,18 +86,18 @@ export default function createDeck() {
               <div className="p-2 w-full">
                 <div className="relative">
                   <label htmlFor="name" className="leading-7 text-sm text-gray-400">Name:</label>
-                  <input type="text" id="name" name="name" placeholder="What is your deck called" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-orange-500 focus:bg-gray-900 focus:ring-2 focus:ring-orange-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                  <input autoComplete="off" type="text" id="name" name="name" placeholder="What is your deck called" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-orange-500 focus:bg-gray-900 focus:ring-2 focus:ring-orange-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
               </div>
               <div className="p-2 w-full">
                 <div className="relative">
                   <label htmlFor="commander" className="leading-7 text-sm text-gray-400">Commander:</label>
-                  <input type="text" id="commander" name="commander" placeholder="Add the name of your commander here" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-orange-500 focus:bg-gray-900 focus:ring-2 focus:ring-orange-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                  <input autoComplete="off" type="text" id="commander" name="commander" placeholder="Add the name of your commander here" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-orange-500 focus:bg-gray-900 focus:ring-2 focus:ring-orange-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
               </div>
               <div className="px-2">
                 <label className="relative inline-flex items-center cursor-pointer">
-                  <input onChange={() => {setShowPartner(!showPartner)}} type="checkbox" value="" className="sr-only peer" />
+                  <input autoComplete="off" onChange={() => {setShowPartner(!showPartner)}} type="checkbox" value="" className="sr-only peer" />
                   <div className="w-11 h-6 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-800 rounded-full peer bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all border-gray-600 peer-checked:bg-blue-600"></div>
                   <span className="ml-3 text-sm font-medium text-gray-300">Partner/Background?</span>
                 </label>
@@ -106,14 +106,14 @@ export default function createDeck() {
                 <div className="px-2 pb-2 w-full">
                   <div className="relative">
                     <label htmlFor="partner" className="leading-7 text-sm text-gray-400">Partner:</label>
-                    <input type="text" id="partner" name="partner" placeholder="Add the name of your partner/background here" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-orange-500 focus:bg-gray-900 focus:ring-2 focus:ring-orange-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                    <input autoComplete="off" type="text" id="partner" name="partner" placeholder="Add the name of your partner/background here" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-orange-500 focus:bg-gray-900 focus:ring-2 focus:ring-orange-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                   </div>
                 </div>
               }
               <div className="p-2 w-full">
                 <div className="relative">
                   <label htmlFor="decklist" className="leading-7 text-sm text-gray-400">Decklist URL:</label>
-                  <input type="text" id="decklist" name="decklist" placeholder="A link to your decklist (optional)" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-orange-500 focus:bg-gray-900 focus:ring-2 focus:ring-orange-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                  <input autoComplete="off" type="text" id="decklist" name="decklist" placeholder="A link to your decklist (optional)" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-orange-500 focus:bg-gray-900 focus:ring-2 focus:ring-orange-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
               </div>
               <div className="p-2 w-full">
