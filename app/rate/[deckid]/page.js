@@ -1,6 +1,6 @@
 "use client"
 
-import Card from "@/app/shared/Card"
+import Card from "@/app/shared/card"
 import RatingLabel from "@/app/shared/RatingLabel"
 import { getGradient } from "@/app/shared/getColor"
 import { AuthContext } from "@/context/AuthContext"
