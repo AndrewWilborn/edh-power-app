@@ -68,9 +68,14 @@ export default function Card({ deck, handleQR }) {
                   </button>
                   <Link className="flex flex-col w-1/2"
                     href={`/edit/${deck.id}`}>
+                    <img src="/images/trash-can.svg" className="h-6 m-1 w-full text-center" />
+                    <p className="w-full text-center">Delete Deck</p>
+                  </Link>
+                  {/* <Link className="flex flex-col w-1/2"
+                    href={`/edit/${deck.id}`}>
                     <img src="/images/pen-svgrepo-com.svg" className="h-6 m-1 w-full text-center" />
                     <p className="w-full text-center">Edit Deck</p>
-                  </Link>
+                  </Link> */}
                 </div>
               }
               <button className="mx-auto w-full"
